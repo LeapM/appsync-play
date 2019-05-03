@@ -1,0 +1,18 @@
+projects:
+  EventNotificationApi0200:
+    schemaPath: src\graphql\schema.json
+    includes:
+      - src\graphql\**\*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        graphQLApiId: pk5vi4m34zh5he6nfp2orl5fte
+        codeGenTarget: typescript
+        generatedFileName: src\API.ts
+        docsFilePath: src\graphql
+        region: ap-southeast-2
+        maxDepth: 2
+      endpoints:
+        prod: >-
+          https://q3ckq5u6dvds7b3pxdtswxzjii.appsync-api.ap-southeast-2.amazonaws.com/graphql
