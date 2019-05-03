@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/appsync-test/static/css/main.3e545749.chunk.css",
-    "main.js": "/appsync-test/static/js/main.883c081f.chunk.js",
-    "main.js.map": "/appsync-test/static/js/main.883c081f.chunk.js.map",
-    "runtime~main.js": "/appsync-test/static/js/runtime~main.6ed4e500.js",
-    "runtime~main.js.map": "/appsync-test/static/js/runtime~main.6ed4e500.js.map",
-    "static/js/2.4723e843.chunk.js": "/appsync-test/static/js/2.4723e843.chunk.js",
-    "static/js/2.4723e843.chunk.js.map": "/appsync-test/static/js/2.4723e843.chunk.js.map",
-    "index.html": "/appsync-test/index.html",
-    "precache-manifest.e99e83b0462c8704855ee69b0f76ddab.js": "/appsync-test/precache-manifest.e99e83b0462c8704855ee69b0f76ddab.js",
-    "service-worker.js": "/appsync-test/service-worker.js",
-    "static/css/main.3e545749.chunk.css.map": "/appsync-test/static/css/main.3e545749.chunk.css.map"
+    "main.css": "/appsync-play/static/css/main.3e545749.chunk.css",
+    "main.js": "/appsync-play/static/js/main.5a980e9e.chunk.js",
+    "main.js.map": "/appsync-play/static/js/main.5a980e9e.chunk.js.map",
+    "runtime~main.js": "/appsync-play/static/js/runtime~main.fea7f297.js",
+    "runtime~main.js.map": "/appsync-play/static/js/runtime~main.fea7f297.js.map",
+    "static/js/2.344f76f4.chunk.js": "/appsync-play/static/js/2.344f76f4.chunk.js",
+    "static/js/2.344f76f4.chunk.js.map": "/appsync-play/static/js/2.344f76f4.chunk.js.map",
+    "index.html": "/appsync-play/index.html",
+    "precache-manifest.fa2706097ea6a44029b4d58093c5cff6.js": "/appsync-play/precache-manifest.fa2706097ea6a44029b4d58093c5cff6.js",
+    "service-worker.js": "/appsync-play/service-worker.js",
+    "static/css/main.3e545749.chunk.css.map": "/appsync-play/static/css/main.3e545749.chunk.css.map"
   }
 }
