@@ -6,7 +6,6 @@ import { OnEventDomainChangeSubscription as DomainEvent } from '../PushData/API'
 let subscriber: any = null
 export default () => {
   let [event, setEvent] = useState<any>('start')
-  console.log('initial useGraph')
   let subscribe = (eventDomain: string) => {}
   let kill = () => {
     (window as any).mqttClient.disconnect()
@@ -20,7 +19,6 @@ export default () => {
   }
 
   useEffect(() => {
-    console.log('call use effect')
     console.log('calling subscribe')
     makeObservable<DomainEvent>({ eventDomain: 'race' }).then(obs => {
       subscriber = obs.subscribe(
