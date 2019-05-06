@@ -27,8 +27,10 @@ export class AppSyncObservable<T> {
 
   private resubscribe() {
     console.log('call resubcript')
-    this.nativeObservable = this.creator()
-    this.subscriptions.forEach(sub => this.buildSubscription(sub.observer))
+    if (this.subscriptions.length > 0) {
+      this.nativeObservable = this.creator()
+      this.subscriptions.forEach(sub => this.buildSubscription(sub.observer, sub))
+    }
   }
 
   private decorateObserverWithErrorHandler<T>(
@@ -37,9 +39,9 @@ export class AppSyncObservable<T> {
     return {
       ...observer,
       error: (err: any) => {
-        console.error('error happend with network')
-        if (err === 'disconnect') {
-          this.resubscribe()
+        console.error('error happend with network', err)
+        if (err.errorMessage == 'AMQJSC0000I OK.') {
+          setTimeout(this.resubscribe.bind(this), 1000)
         } else if (observer.error) {
           observer.error(err)
         }
@@ -52,6 +54,7 @@ export class AppSyncObservable<T> {
     error?: (error: any) => void,
     complete?: () => void
   ) {
+    console.log('subscribe')
     let observer =
       observerOrNext instanceof Function
         ? {
@@ -72,19 +75,25 @@ export class AppSyncObservable<T> {
     return subscription
   }
 
-  private buildSubscription(observer: ZenObservable.Observer<T>) {
+  private buildSubscription(observer: ZenObservable.Observer<T>, masterSub?:SubscriptionMeta<T>) {
     // tslint:disable-next-line:no-console
 
     observer = this.decorateObserverWithErrorHandler(observer)
     const nativeSubscription = this.nativeObservable.subscribe(observer)
+    if (masterSub) {
+      masterSub.children.push(nativeSubscription)
+    }
     const nativeUnsubscribe = nativeSubscription.unsubscribe
     nativeSubscription.unsubscribe = () => {
+      console.log('call unsubscribe')
       const index = this.subscriptions.findIndex(
         v => v.subscription == nativeSubscription
       )
       if (index >= 0) {
         console.log('find cached subscription', this.subscriptions[0])
-        this.subscriptions[index].children.forEach(c => c.unsubscribe())
+        this.subscriptions[index].children.forEach(c => {
+          console.log('call unsubscribe child')
+          c.unsubscribe()})
         this.subscriptions.splice(index, 1)
       }
 

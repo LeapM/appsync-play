@@ -44,5 +44,5 @@
     "@aws-amplify/cli": "^1.6.4",
     "gh-pages": "^2.0.1"
   },
-  "homepage": "https://leapm.github.io/appsync-test"
+  "homepage": "https://leapm.github.io/appsync-play"
 }
