@@ -55,7 +55,18 @@ function decorateObservable<T>(creator: () => ZenObservable<T>): Rx.Subject<T> {
   subscribeToSubject(subject, creator, currentState)
 
   let subjectSubscribe = subject.subscribe.bind(subject)
-
+  subject.subscribe = function(x: any): any {
+    currentState.subscriptionCount += 1
+    subjectSubscribe()
+  }
+  let subjectDispose = subject.dispose.bind(subject)
+  subject.dispose = () => {
+    currentState.subscriptionCount -= 1
+    if (currentState.subscriptionCount < 1) {
+      currentState.nativeSubscription!.unsubscribe()
+    }
+    subjectDispose()
+  }
   return subject
 }
 
